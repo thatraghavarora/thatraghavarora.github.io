@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Raghav Arora cybersecurity portfolio: bug hunter, researcher, and web developer focused on responsible disclosure." />
+    <title>Bug Hunter Portfolio Header</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg: #0b0f14;
+            --panel: #111826;
+            --panel-soft: #162234;
+            --accent: #34d399;
+            --accent-2: #fbbf24;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #172033 0%, #0b0f14 55%);
+            color: var(--text);
+            font-family: "Space Grotesk", sans-serif;
+            min-height: 100vh;
+        }
+
+        .hero-shell {
+            background: var(--panel);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+            box-shadow: 0 20px 50px rgba(5, 8, 15, 0.65);
+            border-radius: 18px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .terminal-title {
+            font-family: "JetBrains Mono", monospace;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+        }
+
+        .file-tree {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--muted);
+            white-space: pre-line;
+        }
+
+        .file-tree strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .blink {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: var(--accent);
+            margin-left: 6px;
+            animation: blink 1s steps(2, start) infinite;
+        }
+
+        .typing-caret {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background: var(--accent);
+            margin-left: 6px;
+            vertical-align: bottom;
+            animation: blink 1s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            49% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .accent-chip {
+            background: rgba(251, 191, 36, 0.12);
+            color: var(--accent-2);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 rgba(52, 211, 153, 0.7);
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(52, 211, 153, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+            }
+        }
+
+        .menu-wrap {
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .menu-row {
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            overflow: visible;
+            gap: 0.35rem;
+        }
+
+        .dropdown-menu {
+            z-index: 1060;
+        }
+
+        .offcanvas-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 7, 12, 0.65);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 1040;
+        }
+
+        .offcanvas-backdrop.show {
+            opacity: 1;
+        }
+
+        .offcanvas-open {
+            overflow: hidden;
+        }
+
+        .hero-section {
+            max-width: 1100px;
+        }
+
+        .hero-title {
+            min-height: 3.6em;
+        }
+
+        .typing-holder {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1rem;
+        }
+
+        .social-card {
+            position: relative;
+            padding: 1.2rem 1.1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            background: rgba(12, 18, 30, 0.9);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .social-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.2), transparent 55%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(2, 7, 12, 0.55);
+        }
+
+        .social-card:hover::before {
+            opacity: 1;
+        }
+
+        .social-card i {
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        .social-handle {
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        @media (max-width: 991.98px) {
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-card {
+                text-align: left;
+            }
+        }
+
+
+        @media (max-width: 991.98px) {
+            .menu-wrap {
+                flex-direction: row;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .menu-row {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                overflow-x: visible;
+            }
+
+            .dropdown-menu {
+                position: static;
+                margin-top: 0.35rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container py-4">
+        <nav class="hero-shell px-4 py-3 d-flex align-items-center justify-content-between menu-wrap">
+            <div class="terminal-title text-success fs-5">&lt;/Raghav&gt;</div>
+            <div class="d-none d-lg-flex align-items-center menu-row">
+                <a class="text-success text-decoration-none terminal-title" href="index.html">home_.sys</a>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        whoami.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="about_me.html">about_me.txt</a></li>
+                        <li><a class="dropdown-item" href="skills.html">skills.map</a></li>
+                        <li><a class="dropdown-item" href="tech_stack.html">tech_stack.json</a></li>
+                        <li><a class="dropdown-item" href="resume.html">resume.download</a></li>
+                        <li><a class="dropdown-item" href="social_links.html">social_links.yaml</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        recon.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="bounty.html">bounty.log</a></li>
+                        <li><a class="dropdown-item" href="vulnerability_reports.html">vulnerability_reports.dir</a></li>
+                        <li><a class="dropdown-item" href="exploit_writeups.html">exploit_writeups.md</a></li>
+                        <li><a class="dropdown-item" href="responsible_disclosure.html">responsible_disclosure.txt</a></li>
+                        <li><a class="dropdown-item" href="bug_hunter_profile.html">bug_hunter_profile.json</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        recognition_sys.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="hall_of_fame.html">hall_of_fame.sys</a></li>
+                        <li><a class="dropdown-item" href="letter_of_recommendation.html">letter_of_recommendation.pdf</a></li>
+                        <li><a class="dropdown-item" href="appreciation_mail.html">appreciation_mail.eml</a></li>
+                        <li><a class="dropdown-item" href="certificates.html">certificates.crt</a></li>
+                        <li><a class="dropdown-item" href="swags_and_rewards.html">swags_and_rewards.pkg</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        warzone.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="hackathon_directory.html">hackathon_directory.exe</a></li>
+                        <li><a class="dropdown-item" href="ctf_wins.html">ctf_wins.log</a></li>                        <li><a class="dropdown-item" href="trophies.html">trophies.dir</a></li>
+                        <li><a class="dropdown-item" href="achievements.html">achievements.json</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        lab.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="projects.html">projects.dir</a></li>
+                        <li><a class="dropdown-item" href="security_tools.html">security_tools.dir</a></li></ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        logs.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="writeups.html">writeups.blog</a></li>
+                        <li><a class="dropdown-item" href="learning_notes.html">learning_notes.md</a></li>
+                        <li><a class="dropdown-item" href="timelines.html">timelines.log</a></li>                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        root_access.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="contact_root.html">contact_root.sh</a></li></ul>
+                </div>
+            </div>
+            <button class="btn btn-outline-success btn-sm d-flex align-items-center gap-2 terminal-title d-lg-none"
+                type="button" data-bs-toggle="offcanvas" data-bs-target="#navOffcanvas" aria-controls="navOffcanvas">
+                <i class="bi bi-list fs-5"></i>
+                Menu
+            </button>
+        </nav>
+    </header>
+
+    
+<section class="container pb-5">
+  <div class="row g-5 align-items-center mx-auto hero-section">
+    <div class="col-lg-5 text-center text-lg-start">
+      <div class="terminal-title text-success mb-2">social_links.yaml</div>
+      <h1 class="display-6 fw-bold mb-3">@thatraghavarora</h1>
+      <p class="mb-4">
+        Find me across the web. Same handle, different arenas.
+      </p>
+      <div class="d-flex flex-wrap gap-2">
+        <span class="badge rounded-pill accent-chip px-3 py-2">X</span>
+        <span class="badge rounded-pill accent-chip px-3 py-2">Telegram</span>
+        <span class="badge rounded-pill accent-chip px-3 py-2">YouTube</span>
+        <span class="badge rounded-pill accent-chip px-3 py-2">LinkedIn</span>
+        <span class="badge rounded-pill accent-chip px-3 py-2">GitHub</span>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="social-grid">
+        <a class="social-card text-decoration-none text-white" href="#" aria-label="X">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-twitter-x"></i>
+            <div>
+              <div class="terminal-title">X</div>
+              <div class="social-handle">@thatraghavarora</div>
+            </div>
+          </div>
+        </a>
+        <a class="social-card text-decoration-none text-white" href="#" aria-label="Telegram">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-telegram"></i>
+            <div>
+              <div class="terminal-title">Telegram</div>
+              <div class="social-handle">@thatraghavarora</div>
+            </div>
+          </div>
+        </a>
+        <a class="social-card text-decoration-none text-white" href="#" aria-label="YouTube">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-youtube"></i>
+            <div>
+              <div class="terminal-title">YouTube</div>
+              <div class="social-handle">@thatraghavarora</div>
+            </div>
+          </div>
+        </a>
+        <a class="social-card text-decoration-none text-white" href="#" aria-label="LinkedIn">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-linkedin"></i>
+            <div>
+              <div class="terminal-title">LinkedIn</div>
+              <div class="social-handle">@thatraghavarora</div>
+            </div>
+          </div>
+        </a>
+        <a class="social-card text-decoration-none text-white" href="#" aria-label="GitHub">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-github"></i>
+            <div>
+              <div class="terminal-title">GitHub</div>
+              <div class="social-handle">@thatraghavarora</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="navOffcanvas"
+        aria-labelledby="navOffcanvasLabel" style="background: #0f1624">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title terminal-title text-success" id="navOffcanvasLabel">
+                Header Map
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex flex-column gap-2 menu-row">
+                <a class="text-success text-decoration-none terminal-title" href="index.html">home_.sys</a>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title w-100 text-start"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        whoami.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100">
+                        <li><a class="dropdown-item" href="about_me.html">about_me.txt</a></li>
+                        <li><a class="dropdown-item" href="skills.html">skills.map</a></li>
+                        <li><a class="dropdown-item" href="tech_stack.html">tech_stack.json</a></li>
+                        <li><a class="dropdown-item" href="resume.html">resume.download</a></li>
+                        <li><a class="dropdown-item" href="social_links.html">social_links.yaml</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title w-100 text-start"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        recon.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100">
+                        <li><a class="dropdown-item" href="bounty.html">bounty.log</a></li>
+                        <li><a class="dropdown-item" href="vulnerability_reports.html">vulnerability_reports.dir</a></li>
+                        <li><a class="dropdown-item" href="exploit_writeups.html">exploit_writeups.md</a></li>
+                        <li><a class="dropdown-item" href="responsible_disclosure.html">responsible_disclosure.txt</a></li>
+                        <li><a class="dropdown-item" href="bug_hunter_profile.html">bug_hunter_profile.json</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title w-100 text-start"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        recognition_sys.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100">
+                        <li><a class="dropdown-item" href="hall_of_fame.html">hall_of_fame.sys</a></li>
+                        <li><a class="dropdown-item" href="letter_of_recommendation.html">letter_of_recommendation.pdf</a></li>
+                        <li><a class="dropdown-item" href="appreciation_mail.html">appreciation_mail.eml</a></li>
+                        <li><a class="dropdown-item" href="certificates.html">certificates.crt</a></li>
+                        <li><a class="dropdown-item" href="swags_and_rewards.html">swags_and_rewards.pkg</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title w-100 text-start"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        warzone.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100">
+                        <li><a class="dropdown-item" href="hackathon_directory.html">hackathon_directory.exe</a></li>
+                        <li><a class="dropdown-item" href="ctf_wins.html">ctf_wins.log</a></li>                        <li><a class="dropdown-item" href="trophies.html">trophies.dir</a></li>
+                        <li><a class="dropdown-item" href="achievements.html">achievements.json</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title w-100 text-start"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        lab.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100">
+                        <li><a class="dropdown-item" href="projects.html">projects.dir</a></li>
+                        <li><a class="dropdown-item" href="security_tools.html">security_tools.dir</a></li></ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title w-100 text-start"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        logs.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100">
+                        <li><a class="dropdown-item" href="writeups.html">writeups.blog</a></li>
+                        <li><a class="dropdown-item" href="learning_notes.html">learning_notes.md</a></li>
+                        <li><a class="dropdown-item" href="timelines.html">timelines.log</a></li>                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle terminal-title w-100 text-start"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        root_access.dir
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100">
+                        <li><a class="dropdown-item" href="contact_root.html">contact_root.sh</a></li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (() => {
+            if (window.bootstrap && window.bootstrap.Dropdown) {
+                return;
+            }
+
+            const toggles = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+            const closeAll = () => {
+                toggles.forEach((btn) => {
+                    const parent = btn.closest(".dropdown");
+                    const menu = parent?.querySelector(".dropdown-menu");
+                    if (menu) {
+                        menu.classList.remove("show");
+                    }
+                    if (parent) {
+                        parent.classList.remove("show");
+                    }
+                    btn.setAttribute("aria-expanded", "false");
+                });
+            };
+
+            toggles.forEach((btn) => {
+                btn.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const parent = btn.closest(".dropdown");
+                    const menu = parent?.querySelector(".dropdown-menu");
+                    if (!menu || !parent) {
+                        return;
+                    }
+                    const isOpen = menu.classList.contains("show");
+                    closeAll();
+                    if (!isOpen) {
+                        menu.classList.add("show");
+                        parent.classList.add("show");
+                        btn.setAttribute("aria-expanded", "true");
+                    }
+                });
+            });
+
+            document.addEventListener("click", (event) => {
+                if (!event.target.closest(".dropdown")) {
+                    closeAll();
+                }
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    closeAll();
+                }
+            });
+        })();
+
+        (() => {
+            if (window.bootstrap && window.bootstrap.Offcanvas) {
+                return;
+            }
+
+            const offcanvas = document.getElementById("navOffcanvas");
+            const toggles = document.querySelectorAll('[data-bs-toggle="offcanvas"]');
+            const dismissers = offcanvas?.querySelectorAll('[data-bs-dismiss="offcanvas"]') || [];
+            const backdrop = document.createElement("div");
+            backdrop.className = "offcanvas-backdrop";
+
+            const open = () => {
+                if (!offcanvas) {
+                    return;
+                }
+                offcanvas.classList.add("show");
+                offcanvas.style.visibility = "visible";
+                document.body.classList.add("offcanvas-open");
+                document.body.appendChild(backdrop);
+                requestAnimationFrame(() => backdrop.classList.add("show"));
+            };
+
+            const close = () => {
+                if (!offcanvas) {
+                    return;
+                }
+                offcanvas.classList.remove("show");
+                offcanvas.style.visibility = "hidden";
+                document.body.classList.remove("offcanvas-open");
+                backdrop.classList.remove("show");
+                setTimeout(() => {
+                    if (backdrop.parentNode) {
+                        backdrop.parentNode.removeChild(backdrop);
+                    }
+                }, 200);
+            };
+
+            toggles.forEach((btn) => {
+                btn.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    open();
+                });
+            });
+
+            dismissers.forEach((btn) => {
+                btn.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    close();
+                });
+            });
+
+            backdrop.addEventListener("click", close);
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    close();
+                }
+            });
+        })();
+
+        (() => {
+            const el = document.getElementById("typingText");
+            if (!el) {
+                return;
+            }
+
+            const text = el.dataset.text || "";
+            let index = 0;
+            let forward = true;
+
+            const tick = () => {
+                if (forward) {
+                    index += 1;
+                    if (index >= text.length) {
+                        forward = false;
+                        setTimeout(tick, 1200);
+                        return;
+                    }
+                } else {
+                    index -= 1;
+                    if (index <= 0) {
+                        forward = true;
+                    }
+                }
+                el.textContent = text.slice(0, index);
+                setTimeout(tick, forward ? 40 : 20);
+            };
+
+            tick();
+        })();
+    </script>
+</body>
+
+</html>
